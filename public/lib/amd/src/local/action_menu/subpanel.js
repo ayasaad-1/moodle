@@ -525,12 +525,8 @@ class SubPanel {
         const dropdown = this.element.closest(Selectors.mainMenu);
         dropdown.querySelectorAll(`${Selectors.subPanelContent}.show`).forEach(visibleSubPanel => {
             const dropdownSubPanel = visibleSubPanel.closest(Selectors.subPanel);
-            if (dropdownSubPanel === this.element) {
-                return;
-            }
-            // Don't hide subpanels that contain the currently focused element
-            // (e.g. nested subpanels the user is interacting with).
-            if (dropdownSubPanel.contains(document.activeElement)) {
+            // Keep this subpanel, its nested subpanels and its parent subpanels open.
+            if (this.element.contains(dropdownSubPanel) || dropdownSubPanel.contains(this.element)) {
                 return;
             }
             new SubPanel(dropdownSubPanel).setVisibility(false);
