@@ -1,5 +1,6 @@
-/* Override the code-color to increase the contrast. */
-$code-color: #db1a74 !default;
+/* Override the code-color to increase the contrast, matching the one on default.scss. */
+$code-color: #af155d !default;
+$code-color-dark: #f1a3c7 !default;
 
 /* Give editor access to all of bootstrap. */
 @import "bootstrap/bootstrap";

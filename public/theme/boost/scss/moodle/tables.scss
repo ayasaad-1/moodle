@@ -49,6 +49,17 @@ table {
     }
 }
 
+// Tinted table backgrounds stay light in both colour modes and get darker on hover and active,
+// so inline code needs a darker colour than the global one to stay readable.
+// This is the design system pink-700, as a hex value because theme_classic also compiles this file without the tokens.
+@each $color, $value in $table-variants {
+    @if $color != "dark" {
+        .table-#{$color} {
+            --#{$prefix}code-color: #831046;
+        }
+    }
+}
+
 .table-responsive {
     @include thin-scrolls($gray-100);
     // Fix dropdown menu position inside responsive tables.
